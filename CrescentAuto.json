@@ -1,0 +1,12 @@
+{
+  "Author": "Private",
+  "Name": "新月岛自动重进",
+  "Punchline": "按剩余时间或区域人数自动重进新月岛。",
+  "Description": "私有自动化插件。显示实例区域人数与剩余时间，自动确认出发，通过 IPC 自动启用 DailyRoutines 所需模块，并可在进岛 10 秒后开启非法模式或执行自定义插件命令。使用 /crescentauto 打开控制面板。",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "utility",
+    "occult-crescent",
+    "private"
+  ]
+}
