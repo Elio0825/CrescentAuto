@@ -83,9 +83,6 @@ public sealed class AutomationController : IDisposable
             : "没有已启用的进岛后命令";
 
         framework.Update += OnFrameworkUpdate;
-
-        if (configuration.Enabled)
-            Start(saveConfiguration: false);
     }
 
     public AutomationState State { get; private set; } = AutomationState.Stopped;
@@ -135,12 +132,10 @@ public sealed class AutomationController : IDisposable
         framework.Update -= OnFrameworkUpdate;
     }
 
-    public void Start(bool saveConfiguration = true)
+    public void Start()
     {
         configuration.Normalize();
-        configuration.Enabled = true;
-        if (saveConfiguration)
-            configuration.Save();
+        configuration.Save();
 
         State = AutomationState.Starting;
         LastError = string.Empty;
@@ -159,19 +154,12 @@ public sealed class AutomationController : IDisposable
         nextTimeSampleAtUtc = DateTimeOffset.MinValue;
 
         log.Information("新月岛自动重进已启动，目标：{Target}", TargetLabel(configuration.Target));
-        if (saveConfiguration)
-        {
-            chatGui.Print($"[新月岛自动重进] 已启动，目标：{TargetLabel(configuration.Target)}。");
-            BeginDailyRoutinesPreflight(DateTimeOffset.UtcNow);
-        }
+        chatGui.Print($"[新月岛自动重进] 已启动，目标：{TargetLabel(configuration.Target)}。");
+        BeginDailyRoutinesPreflight(DateTimeOffset.UtcNow);
     }
 
-    public void Stop(string reason = "用户停止", bool saveConfiguration = true)
+    public void Stop(string reason = "用户停止")
     {
-        configuration.Enabled = false;
-        if (saveConfiguration)
-            configuration.Save();
-
         State = AutomationState.Stopped;
         LastMessage = reason;
         NextActionAtUtc = null;
@@ -181,9 +169,7 @@ public sealed class AutomationController : IDisposable
         dependencyPreflightDeadlineUtc = null;
         LowPopulationSinceUtc = null;
         log.Information("新月岛自动重进已停止：{Reason}", reason);
-
-        if (saveConfiguration)
-            chatGui.Print($"[新月岛自动重进] 已停止：{reason}。");
+        chatGui.Print($"[新月岛自动重进] 已停止：{reason}。");
     }
 
     public void RequestImmediateReentry()
@@ -700,8 +686,6 @@ public sealed class AutomationController : IDisposable
 
         if (result == IntegrationActionResult.Simulated)
         {
-            configuration.Enabled = false;
-            configuration.Save();
             State = AutomationState.DryRunIdle;
             NextActionAtUtc = null;
             LastMessage = message;
@@ -746,7 +730,6 @@ public sealed class AutomationController : IDisposable
 
     private void Fail(string error)
     {
-        configuration.Enabled = false;
         configuration.Save();
         State = AutomationState.Faulted;
         LastError = error;

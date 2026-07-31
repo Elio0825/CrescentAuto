@@ -22,8 +22,7 @@ public sealed class Configuration : IPluginConfiguration
     public const string DefaultExitCommand = "/pdr leaveduty";
     public const string DefaultPostEntryCommand = "/bocchiillegal on";
 
-    public int Version { get; set; } = 6;
-    public bool Enabled { get; set; }
+    public int Version { get; set; } = 7;
     public bool DryRun { get; set; }
     public bool AutoCommenceDuty { get; set; } = true;
     public bool AutoEnableDailyRoutinesModules { get; set; } = true;
@@ -62,7 +61,7 @@ public sealed class Configuration : IPluginConfiguration
         var previousVersion = Version;
         if (previousVersion < 4)
             MigrateVersion4Defaults();
-        Version = 6;
+        Version = 7;
         ReenterWhenRemainingMinutes = Math.Clamp(ReenterWhenRemainingMinutes, 1, 480);
         PopulationThreshold = Math.Clamp(PopulationThreshold, 1, 200);
         PopulationSampleSeconds = Math.Clamp(PopulationSampleSeconds, 1, 60);

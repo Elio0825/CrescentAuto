@@ -39,7 +39,7 @@ https://raw.githubusercontent.com/Elio0825/CrescentAuto/main/pluginmaster.json
 
 默认自动启用 `AutoTalkSkip`、`FieldEntryCommand` 和 `InstantLeaveDuty`，并将修改保存到 DailyRoutines 配置。模块加载是异步的，自动流程每 2 秒复查一次，最多等待 15 秒，等待期间不计入进出岛重试次数。`InstantLeaveDuty` 可能受 DailyRoutines 权限控制；加载失败时面板会显示具体原因。
 
-每次由用户手动启动自动运行时，插件都会主动执行一次 DailyRoutines 模块检查与启用流程，并等待异步加载完成。插件重载后自动恢复运行状态时不会重复执行这项预检。
+每次由用户手动启动自动运行时，插件都会主动执行一次 DailyRoutines 模块检查与启用流程，并等待异步加载完成。
 
 DailyRoutines 插件本体仍必须在 Dalamud 中启用。Dalamud 没有面向普通插件开放可靠的“自动启用另一个插件本体”接口；本插件只能在 DailyRoutines 本体运行后自动启用其内部模块。
 
@@ -107,4 +107,4 @@ dotnet build -c Release
 | `/crescentauto enter` | 在岛外立即进入目标区域 |
 | `/crescentauto status` | 输出区域人数、剩余时间和自动状态 |
 
-进入后默认保留 3 分钟保护期，避免 `ContentTimeLeft` 在副本开场倒计时阶段被误判为即将结束。插件重载后会恢复已保存的启用状态。
+进入后默认保留 3 分钟保护期，避免 `ContentTimeLeft` 在副本开场倒计时阶段被误判为即将结束。自动运行状态只保存在内存中；重新登录、插件重载或直接结束游戏后始终保持停止，必须由用户重新启动。

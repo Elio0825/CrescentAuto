@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Dalamud.NET.Sdk/15.0.0">
   <PropertyGroup>
-    <Version>0.6.0.0</Version>
+    <Version>0.6.1.0</Version>
     <Authors>Los</Authors>
-    <PackageProjectUrl>https://github.com/private/CrescentAuto</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Elio0825/CrescentAuto</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IsPackable>false</IsPackable>
     <Nullable>enable</Nullable>
