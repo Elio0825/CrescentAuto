@@ -1,0 +1,22 @@
+[
+  {
+    "Author": "Los",
+    "Name": "新月岛自动重进",
+    "InternalName": "CrescentAuto",
+    "AssemblyVersion": "0.6.0.0",
+    "Punchline": "按剩余时间或区域人数自动重进新月岛。",
+    "Description": "显示实例区域人数与剩余时间，自动确认出发，管理 DailyRoutines 所需模块，并支持进岛后执行多个插件命令。",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "LoadPriority": 0,
+    "Tags": [
+      "utility",
+      "occult-crescent",
+      "automation"
+    ],
+    "AcceptsFeedback": false,
+    "RepoUrl": "https://github.com/Elio0825/CrescentAuto",
+    "DownloadLinkInstall": "https://github.com/Elio0825/CrescentAuto/releases/download/0.6.0.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Elio0825/CrescentAuto/releases/download/0.6.0.0/latest.zip"
+  }
+]

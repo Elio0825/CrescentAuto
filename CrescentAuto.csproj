@@ -2,6 +2,7 @@
 <Project Sdk="Dalamud.NET.Sdk/15.0.0">
   <PropertyGroup>
     <Version>0.6.0.0</Version>
+    <Authors>Los</Authors>
     <PackageProjectUrl>https://github.com/private/CrescentAuto</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <IsPackable>false</IsPackable>

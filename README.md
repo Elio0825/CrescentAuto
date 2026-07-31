@@ -2,6 +2,14 @@
 
 Dalamud API 15 私有插件。按副本剩余时间或实例区域人数自动退出并重新进入新月岛，支持自动确认任务出发。
 
+作者：Los
+
+Dalamud 第三方仓库地址：
+
+```text
+https://raw.githubusercontent.com/Elio0825/CrescentAuto/main/pluginmaster.json
+```
+
 ## 功能
 
 - 通过 `ContentMemberList` Agent 请求刷新后读取 `InfoProxyContentMember.Instance()->EntryCount`，显示服务端实例成员列表的区域人数，不使用附近对象表。
